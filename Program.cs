@@ -3,14 +3,6 @@ using System.IO;
 
 namespace _123
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-
     public class Inform
     {
         string name;
@@ -59,7 +51,7 @@ namespace _123
         {
             return this.way;
         }
-        public void set_way(string new_way)
+        public void set_path(string new_way)
         {
             this.way = new_way;
         }
@@ -89,5 +81,17 @@ namespace _123
     {
 
     }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Inform x = new Inform();
+            x.set_name("50 shades of icecream");
+            x.set_keyword("new; fresh; bestseller");
+            Console.WriteLine($"name - {x.get_name()};\nkeywords - {x.get_keyword()}");
+        }
+    }
+
 
 }
