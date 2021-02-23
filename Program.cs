@@ -5,11 +5,11 @@ namespace _123
 {
     public class Inform
     {
-        string name;
-        string author;
-        string keyword;
-        string theme;
-        string way;
+        public string name;
+        public string author;
+        public string keyword;
+        public string theme;
+        public string path;
 
         public string get_name()
         {
@@ -47,49 +47,54 @@ namespace _123
             this.theme = new_theme;
         }
 
-        public string get_way()
+        public string get_path()
         {
-            return this.way;
+            return this.path;
         }
-        public void set_path(string new_way)
+        public void set_path(string new_path)
         {
-            this.way = new_way;
+            this.path = new_path;
         }
     }
 
     public class Word : Inform
     {
+        public new string get_path()
+        {
+            path = @"D:\one.docx";
+            return this.path;
+        }
+        public void exsts()
+        {
+            if (File.Exists(path))
+            {
+                Console.WriteLine("Файл Существует");
+            }
+            else
+            {
+                File.Create(path);
+            }
+        }
+        public new string get_name()
+        {
+            this.name = System.IO.Path.GetFileNameWithoutExtension(path);
+            Console.WriteLine("Имя файла: "+name);
+            return this.name;
+        }
 
-    }
-
-    public class Pdf : Inform
-    {
-
-    }
-
-    public class Excel : Inform
-    {
-
-    }
-
-    public class Txt : Inform
-    {
-
-    }
-
-    public class Html : Inform
-    {
-
+      
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Inform x = new Inform();
-            x.set_name("50 shades of icecream");
-            x.set_keyword("new; fresh; bestseller");
-            Console.WriteLine($"name - {x.get_name()};\nkeywords - {x.get_keyword()}");
+            Word One = new Word();
+            One.get_path();
+            One.exsts();
+            Console.WriteLine("Путь файла: "+One.path);
+            One.get_name();
+
         }
     }
 
