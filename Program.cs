@@ -134,6 +134,26 @@ namespace _123
                 return this.theme;
             }
         }
+        public class Html : Inform
+        {
+            public new string get_path()
+            {
+                path = @"D:\five.html";
+                return this.path;
+            }
+            public new string get_theme()
+            {
+                theme = "Html";
+                Console.WriteLine("Тема: " + theme);
+                return this.theme;
+            }
+            public new string get_keyword()
+            {
+                theme = "Веб страница, Сайт";
+                Console.WriteLine("Ключевые слова: " + theme);
+                return this.theme;
+            }
+        }
         class Program
         {
             static void Main(string[] args)
@@ -145,6 +165,8 @@ namespace _123
                 Excel_();
                 Console.WriteLine("_____________________");
                 Txt_();
+                Console.WriteLine("_____________________");
+                Html_();
             }
             static void Word_()
             {
@@ -189,6 +211,17 @@ namespace _123
                 four.get_author();
                 four.get_theme();
                 four.get_keyword();
+            }
+            static void Html_()
+            {
+                Html five = new Html();
+                five.get_path();
+                five.exsts();
+                Console.WriteLine("Путь файла: " + five.path);
+                five.get_name();
+                five.get_author();
+                five.get_theme();
+                five.get_keyword();
             }
 
         }
