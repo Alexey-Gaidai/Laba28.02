@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Diagnostics;
 namespace _123
 {
     public class Inform
@@ -13,6 +15,8 @@ namespace _123
 
         public string get_name()
         {
+            this.name = System.IO.Path.GetFileNameWithoutExtension(path);
+            Console.WriteLine("Имя файла: " + name);
             return this.name;
         }
         public void set_name(string new_name)
@@ -20,9 +24,10 @@ namespace _123
             this.name = new_name;
         }
 
-        public string get_author()
+        public void get_author()
         {
-            return this.author;
+            FileVersionInfo auth = FileVersionInfo.GetVersionInfo(path);
+            Console.WriteLine("Имя компании: " + auth.CompanyName);
         }
         public void set_author(string new_author)
         {
@@ -40,6 +45,7 @@ namespace _123
 
         public string get_theme()
         {
+
             return this.theme;
         }
         public void set_theme(string new_theme)
@@ -73,30 +79,39 @@ namespace _123
             else
             {
                 File.Create(path);
+                Console.WriteLine("Файл был создан");
             }
         }
-        public new string get_name()
+        /*public new string get_name()
         {
             this.name = System.IO.Path.GetFileNameWithoutExtension(path);
             Console.WriteLine("Имя файла: "+name);
             return this.name;
-        }
-
-      
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
+        }*/
+        /*public new void get_author()
         {
-            Word One = new Word();
-            One.get_path();
-            One.exsts();
-            Console.WriteLine("Путь файла: "+One.path);
-            One.get_name();
+            FileVersionInfo auth = FileVersionInfo.GetVersionInfo(path);
+            Console.WriteLine("Имя компании: "+auth.CompanyName);
+        }*/
+        public new void get_theme()
+        {
 
         }
+
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Word One = new Word();
+                One.get_path();
+                One.exsts();
+                Console.WriteLine("Путь файла: " + One.path);
+                One.get_name();
+                One.get_author();
+
+            }
+        }
+
+
     }
-
-
 }
