@@ -13,63 +13,6 @@ namespace _123
         public string theme;
         public string path;
 
-        public string get_name()
-        {
-            this.name = System.IO.Path.GetFileNameWithoutExtension(path);
-            Console.WriteLine("Имя файла: " + name);
-            return this.name;
-        }
-        public void set_name(string new_name)
-        {
-            this.name = new_name;
-        }
-
-        public void get_author()
-        {
-            FileVersionInfo auth = FileVersionInfo.GetVersionInfo(path);
-            Console.WriteLine("Имя компании: " + auth.CompanyName);
-        }
-        public void set_author(string new_author)
-        {
-            this.author = new_author;
-        }
-
-        public string get_keyword()
-        {
-            return this.keyword;
-        }
-        public void set_keyword(string new_keyword)
-        {
-            this.keyword = new_keyword;
-        }
-
-        public string get_theme()
-        {
-
-            return this.theme;
-        }
-        public void set_theme(string new_theme)
-        {
-            this.theme = new_theme;
-        }
-
-        public string get_path()
-        {
-            return this.path;
-        }
-        public void set_path(string new_path)
-        {
-            this.path = new_path;
-        }
-    }
-
-    public class Word : Inform
-    {
-        public new string get_path()
-        {
-            path = @"D:\one.docx";
-            return this.path;
-        }
         public void exsts()
         {
             if (File.Exists(path))
@@ -82,25 +25,128 @@ namespace _123
                 Console.WriteLine("Файл был создан");
             }
         }
-        /*public new string get_name()
+        public string get_name()
         {
             this.name = System.IO.Path.GetFileNameWithoutExtension(path);
-            Console.WriteLine("Имя файла: "+name);
+            Console.WriteLine("Имя файла: " + name);
             return this.name;
-        }*/
-        /*public new void get_author()
+        }
+        public void get_author()
         {
             FileVersionInfo auth = FileVersionInfo.GetVersionInfo(path);
-            Console.WriteLine("Имя компании: "+auth.CompanyName);
-        }*/
-        public new void get_theme()
-        {
-
+            Console.WriteLine("Имя компании: " + auth.CompanyName);
         }
 
+        public string get_keyword()
+        {
+            return this.keyword;
+        }
+        public string get_theme()
+        {
+
+            return this.theme;
+        }
+       
+        public string get_path()
+        {
+            return this.path;
+        }
+
+    }
+
+    public class Word : Inform
+    {
+        public new string get_path()
+        {
+            path = @"D:\one.docx";
+            return this.path;
+        }
+        public new string get_theme()
+        {
+            theme = "Редактор текста";
+            Console.WriteLine("Тема: " + theme);
+            return this.theme; 
+        }
+        public new string get_keyword()
+        {
+            theme = "Текст, Редактирование, Ворд";
+            Console.WriteLine("Ключевые слова: " + theme);
+            return this.theme;
+        }
+
+        public class PDF : Inform
+        {
+            public new string get_path()
+            {
+                path = @"D:\two.pdf";
+                return this.path;
+            }
+            public new string get_theme()
+            {
+                theme = "Электронный Документ";
+                Console.WriteLine("Тема: " + theme);
+                return this.theme;
+            }
+            public new string get_keyword()
+            {
+                theme = "Текст, Графика, Печать";
+                Console.WriteLine("Ключевые слова: " + theme);
+                return this.theme;
+            }
+        }
+        public class Excel : Inform
+        {
+            public new string get_path()
+            {
+                path = @"D:\three.xlsx";
+                return this.path;
+            }
+            public new string get_theme()
+            {
+                theme = "Таблицы";
+                Console.WriteLine("Тема: " + theme);
+                return this.theme;
+            }
+            public new string get_keyword()
+            {
+                theme = "Графики, Расписание, Таблицы";
+                Console.WriteLine("Ключевые слова: " + theme);
+                return this.theme;
+            }
+        }
+        public class Txt : Inform
+        {
+            public new string get_path()
+            {
+                path = @"D:\four.txt";
+                return this.path;
+            }
+            public new string get_theme()
+            {
+                theme = "Блокнот";
+                Console.WriteLine("Тема: " + theme);
+                return this.theme;
+            }
+            public new string get_keyword()
+            {
+                theme = "Текст, Заметки, Записи";
+                Console.WriteLine("Ключевые слова: " + theme);
+                return this.theme;
+            }
+        }
         class Program
         {
             static void Main(string[] args)
+            {
+                Word_();
+                Console.WriteLine("_____________________");
+                Pdf_();
+                Console.WriteLine("_____________________");
+                Excel_();
+                Console.WriteLine("_____________________");
+                Txt_();
+            }
+            static void Word_()
             {
                 Word One = new Word();
                 One.get_path();
@@ -108,10 +154,48 @@ namespace _123
                 Console.WriteLine("Путь файла: " + One.path);
                 One.get_name();
                 One.get_author();
-
+                One.get_theme();
+                One.get_keyword();
             }
+            static void Pdf_()
+            {
+                PDF two = new PDF();
+                two.get_path();
+                two.exsts();
+                Console.WriteLine("Путь файла: " + two.path);
+                two.get_name();
+                two.get_author();
+                two.get_theme();
+                two.get_keyword();
+            }
+            static void Excel_()
+            {
+                Excel three = new Excel();
+                three.get_path();
+                three.exsts();
+                Console.WriteLine("Путь файла: " + three.path);
+                three.get_name();
+                three.get_author();
+                three.get_theme();
+                three.get_keyword();
+            }
+            static void Txt_()
+            {
+                Txt four = new Txt();
+                four.get_path();
+                four.exsts();
+                Console.WriteLine("Путь файла: " + four.path);
+                four.get_name();
+                four.get_author();
+                four.get_theme();
+                four.get_keyword();
+            }
+
         }
-
-
+        
     }
+
+
+
+
 }
