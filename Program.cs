@@ -5,7 +5,7 @@ using System.Linq;
 using System.Diagnostics;
 namespace _123
 {
-    public class Inform
+    public class Inform //основной класс
     {
         public string name;
         public string author;
@@ -13,7 +13,7 @@ namespace _123
         public string theme;
         public string path;
 
-        public void exsts()
+        public void exsts() //проверка на существование файла, если его нет, то ничего страшного, создадим
         {
             if (File.Exists(path))
             {
@@ -25,33 +25,33 @@ namespace _123
                 Console.WriteLine("Файл был создан");
             }
         }
-        public string get_name()
+        public string get_name()//получение имени
         {
             this.name = System.IO.Path.GetFileNameWithoutExtension(path);
            // Console.WriteLine("Имя файла: " + name);
             return this.name;
         }
-        public string get_author()
+        public string get_author()//получение автора
         {
             FileVersionInfo auth = FileVersionInfo.GetVersionInfo(path);
             author = auth.CompanyName;
             return this.author;
         }
 
-        public string get_keyword()
+        public string get_keyword()//получение ключевый слов
         {
             return this.keyword;
         }
-        public string get_theme()
+        public string get_theme()//получение темы
         {
             return this.theme;
         }
 
-        public string get_path()
+        public string get_path()//получение пути(здесь не используется так как путь мы получаем вдля разных предметов в разных классах)
         {
             return this.path;
         }
-        public virtual void Display()
+        public virtual void Display()//метод вывода в синглтон
         {
             Console.Write("имя: " + name + "\n" 
             + "путь: " + path + "\n"
@@ -64,62 +64,57 @@ namespace _123
 
     }
 
-    public class Word : Inform
+    public class Word : Inform //класс наследник для ворда
     {
-        public new string get_path()
+        public new string get_path()//получаем путь
         {
             path = @"D:\one.docx";
             return this.path;
         }
-        public new string get_theme()
+        public new string get_theme()//указываем темки
         {
             theme = "Редактор текста";
             //Console.WriteLine("Тема: " + theme);
             return this.theme;
         }
-        public new string get_keyword()
+        public new string get_keyword()//указываем ключевые словечки
         {
             keyword = "Текст, Редактирование, Ворд";
             //Console.WriteLine("Ключевые слова: " + theme);
             return this.keyword;
         }
-        public new virtual void Display()
-        {
-            Console.WriteLine("Name:" + name);
 
-        }
-
-        public class PDF : Inform
+        public class PDF : Inform//класс наследник для пдф
         {
-            public new string get_path()
+            public new string get_path()//получаем путь
             {
                 path = @"D:\two.pdf";
                 return this.path;
             }
-            public new string get_theme()
+            public new string get_theme()//вписываем темки
             {
                 theme = "Электронный Документ";
                 return this.theme;
             }
-            public new string get_keyword()
+            public new string get_keyword()//вписываем ключевые слова
             {
                 keyword = "Текст, Графика, Печать";
                 return this.keyword;
             }
         }
-        public class Excel : Inform
+        public class Excel : Inform//класс наследник для экселя
         {
-            public new string get_path()
+            public new string get_path()//получаем путь
             {
                 path = @"D:\three.xlsx";
                 return this.path;
             }
-            public new string get_theme()
+            public new string get_theme()//пишем темки
             {
                 theme = "Таблицы";
                 return this.theme;
             }
-            public new string get_keyword()
+            public new string get_keyword()//пишем ключевые слова
             {
                 keyword = "Графики, Расписание, Таблицы";
                 return this.keyword;
@@ -167,12 +162,12 @@ namespace _123
         {
             static void Main(string[] args)
             {
-                string choice;
+                string choice;//переменная ввода
 
 
                 while (true)
                 {
-                    Console.Write("\n____________________________\n" +
+                    Console.Write("\n____________________________\n" +//меню
                         "Введите номер документа, информацию которого вы хотите вывести? \n " +
                         "0) *ВЫХОД ИЗ ПРОГРАММЫ* \n " +
                         "1) MS Word \n " +
@@ -184,13 +179,13 @@ namespace _123
                     choice = Console.ReadLine();
                     Console.Clear();
 
-                    // Проверка на команду выхода из приложения
+                    // Проверка на выход
                     if (choice == "0")
                     {
                         Console.Write("\n**ВЫХОД ИЗ ПРИЛОЖЕНИЯ**");
                         break;
                     }
-                    switch (choice)
+                    switch (choice)//действия по нажатию
                     {
                         case "1":
                             Word One = new Word();
