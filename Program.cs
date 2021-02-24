@@ -13,7 +13,7 @@ namespace _123
         public string theme;
         public string path;
 
-        public void exsts() //проверка на существование файла, если его нет, то ничего страшного, создадим
+        public void Exists() //проверка на существование файла, если его нет, то ничего страшного, создадим
         {
             if (File.Exists(path))
             {
@@ -25,29 +25,29 @@ namespace _123
                 Console.WriteLine("Файл был создан");
             }
         }
-        public string get_name()//получение имени
+        public string Name()//получение имени
         {
             this.name = System.IO.Path.GetFileNameWithoutExtension(path);
            // Console.WriteLine("Имя файла: " + name);
             return this.name;
         }
-        public string get_author()//получение автора
+        public string Author()//получение автора
         {
             FileVersionInfo auth = FileVersionInfo.GetVersionInfo(path);
             author = auth.CompanyName;
             return this.author;
         }
 
-        public string get_keyword()//получение ключевый слов
+        public string Keywords()//получение ключевый слов
         {
             return this.keyword;
         }
-        public string get_theme()//получение темы
+        public string Theme()//получение темы
         {
             return this.theme;
         }
 
-        public string get_path()//получение пути(здесь не используется так как путь мы получаем вдля разных предметов в разных классах)
+        public string Path()//получение пути(здесь не используется так как путь мы получаем вдля разных предметов в разных классах)
         {
             return this.path;
         }
@@ -66,18 +66,18 @@ namespace _123
 
     public class Word : Inform //класс наследник для ворда
     {
-        public new string get_path()//получаем путь
+        public new string Path()//получаем путь
         {
             path = @"D:\one.docx";
             return this.path;
         }
-        public new string get_theme()//указываем темки
+        public new string Theme()//указываем темки
         {
             theme = "Редактор текста";
             //Console.WriteLine("Тема: " + theme);
             return this.theme;
         }
-        public new string get_keyword()//указываем ключевые словечки
+        public new string Keywords()//указываем ключевые словечки
         {
             keyword = "Текст, Редактирование, Ворд";
             //Console.WriteLine("Ключевые слова: " + theme);
@@ -86,17 +86,17 @@ namespace _123
 
         public class PDF : Inform//класс наследник для пдф
         {
-            public new string get_path()//получаем путь
+            public new string Path()//получаем путь
             {
                 path = @"D:\two.pdf";
                 return this.path;
             }
-            public new string get_theme()//вписываем темки
+            public new string Theme()//вписываем темки
             {
                 theme = "Электронный Документ";
                 return this.theme;
             }
-            public new string get_keyword()//вписываем ключевые слова
+            public new string Keywords()//вписываем ключевые слова
             {
                 keyword = "Текст, Графика, Печать";
                 return this.keyword;
@@ -104,17 +104,17 @@ namespace _123
         }
         public class Excel : Inform//класс наследник для экселя
         {
-            public new string get_path()//получаем путь
+            public new string Path()//получаем путь
             {
                 path = @"D:\three.xlsx";
                 return this.path;
             }
-            public new string get_theme()//пишем темки
+            public new string Theme()//пишем темки
             {
                 theme = "Таблицы";
                 return this.theme;
             }
-            public new string get_keyword()//пишем ключевые слова
+            public new string Keywords()//пишем ключевые слова
             {
                 keyword = "Графики, Расписание, Таблицы";
                 return this.keyword;
@@ -122,17 +122,17 @@ namespace _123
         }
         public class Txt : Inform
         {
-            public new string get_path()
+            public new string Path()
             {
                 path = @"D:\four.txt";
                 return this.path;
             }
-            public new string get_theme()
+            public new string Theme()
             {
                 theme = "Блокнот";
                 return this.theme;
             }
-            public new string get_keyword()
+            public new string Keywords()
             {
                 keyword = "Текст, Заметки, Записи";
                 return this.keyword;
@@ -140,17 +140,17 @@ namespace _123
         }
         public class Html : Inform
         {
-            public new string get_path()
+            public new string Path()
             {
                 path = @"D:\five.html";
                 return this.path;
             }
-            public new string get_theme()
+            public new string Theme()
             {
                 theme = "Html";
                 return this.theme;
             }
-            public new string get_keyword()
+            public new string Keywords()
             {
                 keyword = "Веб страница, Сайт";
                 return this.keyword;
@@ -167,78 +167,78 @@ namespace _123
 
                 while (true)
                 {
-                    Console.Write("\n____________________________\n" +//меню
-                        "Введите номер документа, информацию которого вы хотите вывести? \n " +
-                        "0) *ВЫХОД ИЗ ПРОГРАММЫ* \n " +
-                        "1) MS Word \n " +
-                        "2) PDF \n " +
-                        "3) MS Excel \n " +
-                        "4) TXT \n " +
-                        "5) HTML \n" +
+                    Console.WriteLine("\n=======================\n" +//меню
+                        "Меню: \n " +
+                        "1 - Word \n " +
+                        "2 - Pdf \n " +
+                        "3 - Excel \n " +
+                        "4 - Txt \n " +
+                        "5 - Html \n" +
+                        " f - *ВЫХОД ИЗ ПРОГРАММЫ* \n " + 
                         "Ввод: ");
                     choice = Console.ReadLine();
                     Console.Clear();
 
                     // Проверка на выход
-                    if (choice == "0")
+                    if (choice == "f")
                     {
-                        Console.Write("\n**ВЫХОД ИЗ ПРИЛОЖЕНИЯ**");
+                        Console.WriteLine("\n\n\n\nВЫХОД\n\n\n\n");
                         break;
                     }
                     switch (choice)//действия по нажатию
                     {
                         case "1":
                             Word One = new Word();
-                            One.get_path();
-                            One.exsts();
-                            One.get_name();
-                            One.get_author();
-                            One.get_theme();
-                            One.get_keyword();
+                            One.Path();
+                            One.Exists();
+                            One.Name();
+                            One.Author();
+                            One.Theme();
+                            One.Keywords();
                             Singleton.Instance.Output(One);
                             break;
                         case "2":
                             PDF two = new PDF();
-                            two.get_path();
-                            two.exsts();
-                            two.get_name();
-                            two.get_author();
-                            two.get_theme();
-                            two.get_keyword();
+                            two.Path();
+                            two.Exists();
+                            two.Name();
+                            two.Author();
+                            two.Theme();
+                            two.Keywords();
                             Singleton.Instance.Output(two);
                             break;
                         case "3":
                             Excel three = new Excel();
-                            three.get_path();
-                            three.exsts();
-                            three.get_name();
-                            three.get_author();
-                            three.get_theme();
-                            three.get_keyword();
+                            three.Path();
+                            three.Exists();
+                            three.Name();
+                            three.Author();
+                            three.Theme();
+                            three.Keywords();
                             Singleton.Instance.Output(three);
                             break;
                         case "4":
                             Txt four = new Txt();
-                            four.get_path();
-                            four.exsts();
-                            four.get_name();
-                            four.get_author();
-                            four.get_theme();
-                            four.get_keyword();
+                            four.Path();
+                            four.Exists();
+                            four.Name();
+                            four.Author();
+                            four.Theme();
+                            four.Keywords();
                             Singleton.Instance.Output(four);
                             break;
                         case "5":
                             Html five = new Html();
-                            five.get_path();
-                            five.exsts();
-                            five.get_name();
-                            five.get_author();
-                            five.get_theme();
-                            five.get_keyword();
+                            five.Path();
+                            five.Exists();
+                            five.Name();
+                            five.Author();
+                            five.Theme();
+                            five.Keywords();
                             Singleton.Instance.Output(five);
                             break;
                         default:
-                            Console.Write("\n **ERROR: Введён неправильный номер документа!! Попробуйте ещё раз!! Введите \"0\" для выхода из приложения** \n");
+                            Console.WriteLine("Введён некорректный номер документа!");
                             break;
                     }
                 }
@@ -252,8 +252,8 @@ namespace _123
             {
                 get
                 {
-                    if (_instance == null) _instance = new Singleton();
-                    return _instance;
+                    if (instance == null) instance = new Singleton();
+                    return instance;
                 }
             }
             public void Output(Inform doc)
@@ -261,7 +261,7 @@ namespace _123
                 doc.Display();
             }
             private Singleton() { }
-            private static Singleton _instance;
+            private static Singleton instance;
 
         }
 
