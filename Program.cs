@@ -17,7 +17,7 @@ namespace _123
         {
             if (File.Exists(path))
             {
-               Console.WriteLine("Файл Существует");
+                Console.WriteLine("Файл Существует");
             }
             else
             {
@@ -28,7 +28,7 @@ namespace _123
         public string Name()//получение имени
         {
             this.name = System.IO.Path.GetFileNameWithoutExtension(path);
-           // Console.WriteLine("Имя файла: " + name);
+            // Console.WriteLine("Имя файла: " + name);
             return this.name;
         }
         public string Author()//получение автора
@@ -53,7 +53,7 @@ namespace _123
         }
         public virtual void Display()//метод вывода в синглтон
         {
-            Console.Write("имя: " + name + "\n" 
+            Console.Write("имя: " + name + "\n"
             + "путь: " + path + "\n"
             + "автор: " + author + "\n"
             + "ключевые слова: " + keyword + "\n"
@@ -83,6 +83,7 @@ namespace _123
             //Console.WriteLine("Ключевые слова: " + theme);
             return this.keyword;
         }
+    }
 
         public class PDF : Inform//класс наследник для пдф
         {
@@ -102,42 +103,44 @@ namespace _123
                 return this.keyword;
             }
         }
-        public class Excel : Inform//класс наследник для экселя
+   
+    public class Excel : Inform//класс наследник для экселя
+    {
+        public new string Path()//получаем путь
         {
-            public new string Path()//получаем путь
-            {
-                path = @"D:\three.xlsx";
-                return this.path;
-            }
-            public new string Theme()//пишем темки
-            {
-                theme = "Таблицы";
-                return this.theme;
-            }
-            public new string Keywords()//пишем ключевые слова
-            {
-                keyword = "Графики, Расписание, Таблицы";
-                return this.keyword;
-            }
+            path = @"D:\three.xlsx";
+            return this.path;
         }
-        public class Txt : Inform
+        public new string Theme()//пишем темки
         {
-            public new string Path()
-            {
-                path = @"D:\four.txt";
-                return this.path;
-            }
-            public new string Theme()
-            {
-                theme = "Блокнот";
-                return this.theme;
-            }
-            public new string Keywords()
-            {
-                keyword = "Текст, Заметки, Записи";
-                return this.keyword;
-            }
+            theme = "Таблицы";
+            return this.theme;
         }
+        public new string Keywords()//пишем ключевые слова
+        {
+            keyword = "Графики, Расписание, Таблицы";
+            return this.keyword;
+        }
+    }
+    public class Txt : Inform
+    {
+        public new string Path()
+        {
+            path = @"D:\four.txt";
+            return this.path;
+        }
+        public new string Theme()
+        {
+            theme = "Блокнот";
+            return this.theme;
+        }
+        public new string Keywords()
+        {
+            keyword = "Текст, Заметки, Записи";
+            return this.keyword;
+        }
+    }
+
         public class Html : Inform
         {
             public new string Path()
@@ -264,6 +267,6 @@ namespace _123
             private static Singleton instance;
 
         }
-
-    }
 }
+  
+
