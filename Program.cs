@@ -28,7 +28,6 @@ namespace _123
         public string Name()//получение имени
         {
             this.name = System.IO.Path.GetFileNameWithoutExtension(path);
-            // Console.WriteLine("Имя файла: " + name);
             return this.name;
         }
         public string Author()//получение автора
@@ -74,13 +73,11 @@ namespace _123
         public new string Theme()//указываем темки
         {
             theme = "Редактор текста";
-            //Console.WriteLine("Тема: " + theme);
             return this.theme;
         }
         public new string Keywords()//указываем ключевые словечки
         {
             keyword = "Текст, Редактирование, Ворд";
-            //Console.WriteLine("Ключевые слова: " + theme);
             return this.keyword;
         }
     }
@@ -160,7 +157,6 @@ namespace _123
             }
         }
 
-    //111111111111111111111
         class Program
         {
             static void Main(string[] args)
@@ -177,12 +173,12 @@ namespace _123
                         "3 - Excel \n " +
                         "4 - Txt \n " +
                         "5 - Html \n" +
-                        " f - *ВЫХОД ИЗ ПРОГРАММЫ* \n " + 
+                        " f - ВЫХОД ИЗ ПРОГРАММЫ \n " + 
                         "Ввод: ");
                     choice = Console.ReadLine();
                     Console.Clear();
 
-                    // Проверка на выход
+                    //проверка на выход
                     if (choice == "f")
                     {
                         Console.WriteLine("\n\n\n\nВЫХОД\n\n\n\n");
